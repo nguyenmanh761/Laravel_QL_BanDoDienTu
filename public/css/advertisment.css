@@ -1,0 +1,64 @@
+.hot {
+    display: flex;
+    justify-content: space-between;
+}
+/*  */
+.hot_product{
+    width: 24.55%;
+    border-radius: 5px;
+    padding: 5px;
+    aspect-ratio: 3/4;
+    background-color: rgb(25, 24, 24);
+    color: white;
+}
+
+.hot_product:hover .image>img{
+    transform: scale(1.1);
+    transition: 500ms ease-in-out;
+}
+/* .hot_product:hover {
+    background-color: #4d5964;
+    color: aqua;
+} */
+.image{
+    width: 100%;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+}
+.image>img{
+    width: 100%;
+    aspect-ratio: 4/3;
+}
+.aboutpr{
+    text-align: center;
+}
+
+.aboutpr>h3{
+    color: rgb(0, 238, 255);
+}
+.aboutpr>h5{
+    text-decoration: line-through;
+}
+.button{
+    text-align: center;
+}
+.button>button{
+    width: 100px;
+}
+
+
+/* infor */
+.content{
+    display: flex;
+    justify-content: space-between;
+}
+.baner{
+    width: 59%;
+    aspect-ratio: 3/2;
+}
+.info{
+    width: 50%;
+}
+.info>button{
+    width: 200px;
+}
