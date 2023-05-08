@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 
-Route::group(['middleware'=>'locale'], function(){
+Route::group(['middleware'=>['locale','auth']], function(){
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::resource('business', \App\Http\Controllers\BusinessController::class);
     Route::resource('feedback', \App\Http\Controllers\FeedbackController::class);
