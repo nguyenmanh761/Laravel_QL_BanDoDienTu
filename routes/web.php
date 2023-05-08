@@ -22,7 +22,6 @@ Route::group(['middleware'=>['locale','auth']], function(){
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::resource('business', \App\Http\Controllers\BusinessController::class);
     Route::resource('feedback', \App\Http\Controllers\FeedbackController::class);
-    Route::resource('advertisment', \App\Http\Controllers\AdvertismentController::class);
     Route::resource('partner', \App\Http\Controllers\PartnerController::class);
     Route::resource('category', \App\Http\Controllers\CategoryController::class);
     Route::resource('product', \App\Http\Controllers\ProductController::class);
@@ -34,6 +33,7 @@ Route::group(['middleware'=>['locale','auth']], function(){
         return view('index');
     })->name('index');
 });
+Route::resource('advertisment', \App\Http\Controllers\AdvertismentController::class);
 
 Route::get('/lang/{lang}', function($lang){
     session(['language'=>$lang]);
