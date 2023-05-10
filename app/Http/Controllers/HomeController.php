@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Product as Product;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -11,10 +11,10 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     /**
      * Show the application dashboard.
@@ -23,6 +23,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $products = Product::all()->take(4);
+        return view('home.index', ['products'=>$products]);
+    }
+
+
+    public function show($id)
+    {
+        $product = Product::findOrFail($id);
+        $products = Product::all()->take(6);
+        return view('home.infor', ['products'=>$products,'product'=>$product]);
     }
 }

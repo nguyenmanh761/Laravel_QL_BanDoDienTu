@@ -65,7 +65,7 @@
                     
                 </div>
                 <div class="button">
-                <a href="{{ route('advertisment.show', ['advertisment'=>$product->id]) }}">
+                <a href="{{ route('home.show', ['id'=>$product->id]) }}">
                     <button type="button" class="btn btn-outline-info">Thông tin</button>
                 </a>
                     

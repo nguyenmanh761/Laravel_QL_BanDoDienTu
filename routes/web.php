@@ -18,8 +18,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 
-Route::group(['middleware'=>['locale','auth']], function(){
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['middleware'=>['locale','auth', 'check.admin']], function(){
     Route::resource('business', \App\Http\Controllers\BusinessController::class);
     Route::resource('feedback', \App\Http\Controllers\FeedbackController::class);
     Route::resource('partner', \App\Http\Controllers\PartnerController::class);
@@ -29,11 +28,30 @@ Route::group(['middleware'=>['locale','auth']], function(){
     Route::resource('comment', \App\Http\Controllers\CommentController::class);
     Route::resource('customer', \App\Http\Controllers\CustomerController::class);
     Route::resource('order', \App\Http\Controllers\OrderController::class);
-    Route::get('/', function () {
-        return view('index');
-    })->name('index');
+    Route::get('/admin', function(){
+        return view('admin');
+    } )->name('admin');
 });
-Route::resource('advertisment', \App\Http\Controllers\AdvertismentController::class);
+
+Route::get('/', function () {
+    return view('index');
+})->name('index');
+
+Route::get('/notAuth', function(){
+   return View('notAuth');
+})->name('notAuth');
+
+
+//
+Route::get('/cart', [App\Http\Controllers\CartController::class, 'index']);
+
+
+
+//
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home.show/{id}', [App\Http\Controllers\HomeController::class, 'show'])->name('home.show');
+Route::get('/categories', [App\Http\Controllers\CategoriesController::class, 'index'])->name('categories');
+
 
 Route::get('/lang/{lang}', function($lang){
     session(['language'=>$lang]);
