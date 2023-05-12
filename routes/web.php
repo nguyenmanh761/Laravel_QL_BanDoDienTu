@@ -33,10 +33,6 @@ Route::group(['middleware'=>['locale','auth', 'check.admin']], function(){
     } )->name('admin');
 });
 
-Route::get('/', function () {
-    return view('index');
-})->name('index');
-
 Route::get('/notAuth', function(){
    return View('notAuth');
 })->name('notAuth');
@@ -48,7 +44,7 @@ Route::get('/cart', [App\Http\Controllers\CartController::class, 'index']);
 
 
 //
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/home.show/{id}', [App\Http\Controllers\HomeController::class, 'show'])->name('home.show');
 Route::get('/categories', [App\Http\Controllers\CategoriesController::class, 'index'])->name('categories');
 
