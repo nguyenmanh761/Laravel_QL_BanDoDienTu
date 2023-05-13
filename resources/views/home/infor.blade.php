@@ -46,11 +46,11 @@
                     <td>{{$product->weight}}</td>
                 </tr>
                 <tr>
-                    <th>Giảm giá</th>
+                    <th>Giá</th>
                     <td>{{$product->price}}</td>
                 </tr>
                 <tr>
-                    <th>Giá</th>
+                    <th>Giảm Giá</th>
                     <td>{{$product->old_price}}</td>
                 </tr>
                 <tr>
@@ -62,8 +62,14 @@
                     <td>{{$product->description}}</td>
                 </tr>
             </table>
-            <button type="button" class="btn btn-danger">Mua Ngay</button>
-            <button type="button" class="btn btn-warning">Thêm vào giỏ hàng</button>
+
+            <form action="{{route('inserttocart.store')}}" method="post">
+                @csrf
+                <input type="number" name="product_id" id="" value="<?php echo $product->id; ?>" style="display: none">
+                <button type="submit" class="btn btn-warning" >Thêm vào giỏ hàng</button>
+
+
+            </form>
         </div>
 
     </div>

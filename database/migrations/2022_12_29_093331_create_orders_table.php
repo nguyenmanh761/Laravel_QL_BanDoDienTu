@@ -18,7 +18,6 @@ class CreateOrdersTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('product_id');
             $table->unsignedBigInteger('quantity');
-            $table->unsignedBigInteger('status');
             $table->unsignedBigInteger('price');
             $table->foreign('user_id')
             ->references('id')

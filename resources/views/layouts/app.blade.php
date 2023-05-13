@@ -12,13 +12,15 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/advertisment.css') }}" rel="stylesheet">
+
 </head>
 <body>
     <div id="app" >
@@ -26,7 +28,7 @@
     
         <nav style=" " class="navbar navbar-expand-md  shadow-sm navbar-dark bg-dark" >
             <div class="container" >
-                <a class="navbar-brand" href="/home">
+                <a class="navbar-brand" href="/">
                 {{__('mylang.advertisment')}}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -220,5 +222,6 @@
 			</div>
 		</footer>
     </div>
+	<script src="{{ asset('js/cart.js') }}" defer></script>
 </body>
 </html>

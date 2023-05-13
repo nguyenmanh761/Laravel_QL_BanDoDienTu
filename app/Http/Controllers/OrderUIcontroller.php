@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-class UserController extends Controller
+use App\Models\Order as Order;
+use App\Models\Product as Product;
+use Auth;
+class OrderUIcontroller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +36,24 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //kiểm tra hàng đã có trong giỏ hay chưa
+        $check = Order::where('user_id', Auth::user()->id)
+        ->Where('product_id', $request->product_id)
+        ->first();
+        if($check){
+            $this->edit(Auth::user()->id, $request->product_id);
+        }
+        else{
+            $order  = new Order();
+            $order->user_id = Auth::user()->id;
+            $order->product_id = $request->product_id;
+            $product = Product::findOrFail($request->product_id)->first();
+            $order->price = $product->price;
+            $a = $order->quantity;
+            $order->quantity = $a+1;
+            $order->save();
+            
+        }
     }
 
     /**
@@ -54,9 +73,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($user_id, $product_id)
     {
-        //
+        echo "bạn đã có sản phẩm này trong giỏ hàng!";
     }
 
     /**

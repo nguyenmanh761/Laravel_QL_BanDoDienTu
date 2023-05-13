@@ -1,6 +1,6 @@
 <?php
     return [
-        'advertisment' => 'Advertisment',
+        'advertisment' => 'Home',
         'business' => 'Business',
         'category' => 'Category',
         'comment' => 'Comment',

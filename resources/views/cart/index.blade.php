@@ -1,50 +1,17 @@
 @extends('layouts.app')
 
 @section("content")
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
 <div  style="margin-top:50px;" class="container">
-    <div id="cart" style="height: 850px;" class="container">
-        <div class="row">
-            <div class="col-md-3 d-none d-lg-block" style="margin-top:50px;">
-                <div class="container" id="mini_cart" style="border:3px var(--red) solid;">
-                    <h3 style="line-height: 50px;text-align:center">
-                        GIỎ HÀNG
-                    </h3>
-                    <table class="table table-stripped">
-                        <tr>
-                            <td>
-                                Tổng tiền
-                            </td>
-                            <td class="cart_subtotal">
-                                500.000
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Thuế
-                            </td>
-                            <td class="cart_tax">
-                                50.000
-                            </td>
-                        </tr>
-                        <tr style="border-top:2px var(--red) solid; font-size:1.2rem;">
-                            <td>
-                                Tổng tiền
-                            </td>
-                            <td class="cart_total">
-                                530.000
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            <div class="col-lg-9">
+    <div id="cart" style="margin-botton: 800px;" class="container">
+        <div class="">
+
+            <div class="col-lg-12">
                 <div class="container-fluid text-center">
                     <h2 class="section-title">
                         GIỎ HÀNG
                     </h2>
-                </div>
-                <div class="container-fluid text-center">
-                    <img src="images/flower_string.png" width="30%">
                 </div>
                 <div class="container">
                     <table class="table table-stripped">
@@ -64,67 +31,71 @@
                                 Thành tiền
                             </th>
                         </tr>
-                    <tr>
-                        <td>
-                            <div class="cart-info">
-                                <img src="./images/products/hoa1.jpg" alt="" style="width:4rem; margin-right:20px;float:left;">
-                                <div>
-                                    <span style="font-size:1.2rem;">
-                                        Bambi Print Mini Backpack
-                                    </span>
-                                    <br>
-                                    <span>
-                                        Giá: 450.000đ
-                                    </span>
-                                    <br>
-                                    <a href="#">
-                                        Xóa
-                                    </a>
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            <input type="text" id="item_1" value="2" class="form-control  cart_item_quantity" style="    text-align: center;
-                            width: 3rem;">
-                        </td>
-                        <td  id="price_item_1">
-                            450.000
-                        </td>
-                        <td id="total_item_1">
-                            900.000
-                        </td>
-                    </tr>
 
-                    <tr>
-                        <td>
-                            <div class="cart-info">
-                                <img src="./images/products/hoa1.jpg" alt="" style="width:4rem; margin-right:20px;float:left;">
-                                <div>
-                                    <span style="font-size:1.2rem;">
-                                        Bambi Print Mini Backpack
-                                    </span>
-                                    <br>
-                                    <span>
-                                        Giá: 450.000đ
-                                    </span>
-                                    <br>
-                                    <a href="#">
-                                        Xóa
-                                    </a>
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            <input type="text" id="item_2" value="2" class="form-control cart_item_quantity" style="    text-align: center;
-                            width: 3rem;">
-                        </td>
-                        <td  id="price_item_2">
-                            450.000
-                        </td>
-                        <td id="total_item_2">
-                            900.000
-                        </td>
-                    </tr>
+
+                        {{--  --}}
+                        <?php $const =0; ?>
+                        @foreach($carts as $cart)
+                        <?php
+                           $product = App\Models\Product::findOrFail($cart->product_id);
+                       ?>
+                            <tr class="item">
+                                <td>
+                                    <div class="cart-info"> 
+                                            <?php
+                                                    //use File;
+                            
+                                                    $dir = public_path('uploads') . "/products/" . $product->id;
+                                                    if(File::exists($dir)){
+                            
+                                                        //print_r(File::Files($dir));
+                                                        //basename($file->getPathname())
+                                                        foreach(File::Files($dir) as $file)
+                                                        {
+                                                            ?>
+                                                                <img src="/uploads/products/{{$product->id}}/{{basename($file->getPathname())}}" alt="" style="height: 100px; width:auto; ">
+                                                            <?php
+                                                        }
+                                                    }
+                                            ?>
+                                        <div>
+                                            <span style="display: none" class="product_id">{{$product->id}}</span>
+                                            <span style="font-size:1.2rem;">
+                                                {{$product->name}}
+
+                                            </span>
+                                            <br>
+                                            <span>
+                                                {{$product->price}}
+                                            </span>
+                                            <br>
+                                            <form action="{{ route('cart.delete', ['id' => $product->id]) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit">Xóa</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </td>
+                            <td>
+                                <form method="POST" action="{{ route('cart.update') }}">
+                                    @csrf
+                                    <input name="product_id" class="" type="number" value="<?php echo $product->id;?>" style="display:none;">
+                                    <input name="quantity" class="quantity" onchange="sumrow(<?php echo $const;?>); this.form.submit(); " min="0" type="number" id="item_1" value="<?php echo $cart->quantity; ?>" class="form-control  cart_item_quantity" style="    text-align: center;
+                                        width: 3rem;">
+                                </form>
+                            </td>
+                            <td class="price"  id="price_item_1">
+                                {{$product->price}}
+                            </td>
+                            <td class="sumrow" id="total_item_1">
+                                {{$product->price*$cart->quantity}}
+                            </td>
+                        </tr>
+                        <?php $const+=1; ?>
+                    @endforeach
+                    {{--  --}}
+                    
 
                     <tr>
                         <td colspan="2">
@@ -140,7 +111,7 @@
                         <td colspan="2" style="border:unset;">
                         </td>
                         <td class="text-right">
-                            Thuế
+                            Thuế (3%)
                         </td>
                         <td style="font-weight:900;" class="cart_tax">
                             50.000
