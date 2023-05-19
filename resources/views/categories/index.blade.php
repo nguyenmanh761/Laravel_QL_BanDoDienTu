@@ -1,28 +1,56 @@
 @extends('layouts.app')
 
 @section("content")
-<div  style="margin-top:50px" class="container">
-    <div style="display: flex; height:1080px;">
+<div  style="margin-top:50px; height:1920px" class="container">
+    <div style="display: flex;">
         <div class="list-group">
-            <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
-              The current link item
-            </a>
-            <a href="#" class="list-group-item list-group-item-action">A second link item</a>
-            <a href="#" class="list-group-item list-group-item-action">A third link item</a>
-            <a href="#" class="list-group-item list-group-item-action">A fourth link item</a>
-            <a class="list-group-item list-group-item-action disabled">A disabled link item</a>
+            <a href="/categories.smartphone" class="list-group-item list-group-item-action ">Điện thoại</a>
+            <a href="/categories.smartphone" class="list-group-item list-group-item-action active" >Tivi</a>
+            <a href="/categories.smartphone" class="list-group-item list-group-item-action">Lap top</a>
+            <a href="/categories.smartphone" class="list-group-item list-group-item-action disabled">Máy tính bảng</a>
         </div>
 
-        <div>
+        <div style=" width:auto; height:400px">
+            <?php $const=0;?>
+            @foreach($products as $product)
+            <div class="hot_product"  style="float: left; display:inline-block">
+                <a href="{{ route('home.show', ['id'=>$product->id]) }}" style="text-decoration: none">
+                <div class="image">
+                <?php
+                        //use File;
+                        $const +=1;
+                        $dir = public_path('uploads') . "/products/" . $product->id;
+                        if(File::exists($dir)){
 
+                            //print_r(File::Files($dir));
+                            //basename($file->getPathname())
+                            foreach(File::Files($dir) as $file)
+                            {
+                                ?>
+                                    <img src="/uploads/products/{{$product->id}}/{{basename($file->getPathname())}}" alt="" width="100%">
+                                <?php
+                            }
+                        }
+                ?>
+                </div>
+                <br>
+                <div class="aboutpr">
+                    <h3 class="name">{{$product->name}}</h3>
+                    <h3> {{$product->id}} </h3>
+                    <h4 class="price">{{$product->price}}</h4>
+                    <h5 class="old_price">{{$product->old_price}}</h5>
+                    
+                </div>
+                <div class="button">
+
+                </div>
+            </a>
+            </div>
+            <?php if($const%4==0) echo '<br>';?>
+            @endforeach
             
         </div>
     </div>
-    <br>
-    <h3 class="text-danger">Hot</h3>
-   
-    <div class ="hot">
 
-    </div>
 </div>
 @endsection

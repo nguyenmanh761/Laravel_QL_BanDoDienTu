@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Order as Order;
 use App\Models\Product as Product;
+use App\Models\Bills as Bills;
 use Auth;
 class CartController extends Controller
 {
@@ -33,5 +34,31 @@ class CartController extends Controller
         }
 
         return response()->json(['success' => false, 'message' => 'Cart not found.']);
+    }
+
+    public function writebill(){
+        $cart = Order::where('user_id', Auth::user()->id)
+                        ->get();
+        $total = 0;
+        for($i=0; $i<count($cart); $i++){
+            $s =  $cart[$i]->quantity*$cart[$i]->price;
+            $total +=$s;
+        }
+        
+        $text = "";
+        for($i=0; $i<count($cart); $i++){
+            $product= Product::findOrFail($cart[$i]->product_id);
+            if($product){
+                $text .= " - Tên sản phẩm: ". $product->name."\n"."  Số lượng: ".$cart[$i]->quantity."\n"."  Đơn giá: ". $product->price . PHP_EOL;
+            }
+        }
+        $tax = $total*0.03;
+        $total = $total - $tax;
+        $s=$total+$tax;
+        $bill = new Bills();
+        $bill->user_id = Auth::user()->id;
+        $bill->text = $text. PHP_EOL . PHP_EOL . " - Thành tiền: ".$s."\n Thuế(3%): ".$tax."\n Tổng cộng: ".$total;
+        $bill->save();
+        return $this->index();
     }
 }

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Order as Order;
 use App\Models\Product as Product;
+use App\Http\Controllers\CartController;
+
 use Auth;
 class OrderUIcontroller extends Controller
 {
@@ -41,7 +43,12 @@ class OrderUIcontroller extends Controller
         ->Where('product_id', $request->product_id)
         ->first();
         if($check){
-            $this->edit(Auth::user()->id, $request->product_id);
+            $x= $check->quantity;
+            $check->quantity = $x +1;
+            $check->save();
+            //$this->edit(Auth::user()->id, $request->product_id);
+            //$result = call([CartController::class, 'index']);
+            return redirect()->action([CartController::class, 'index']);;
         }
         else{
             $order  = new Order();
@@ -52,7 +59,8 @@ class OrderUIcontroller extends Controller
             $a = $order->quantity;
             $order->quantity = $a+1;
             $order->save();
-            
+            //$result = call([CartController::class, 'index']);
+            return redirect()->action([CartController::class, 'index']);;
         }
     }
 
@@ -75,6 +83,8 @@ class OrderUIcontroller extends Controller
      */
     public function edit($user_id, $product_id)
     {
+
+
         echo "bạn đã có sản phẩm này trong giỏ hàng!";
     }
 

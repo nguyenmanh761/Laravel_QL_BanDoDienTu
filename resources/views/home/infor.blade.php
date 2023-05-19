@@ -75,8 +75,9 @@
     </div>
     <h2>Các sản phẩm khác</h2>
     <div class ="hot">
-    @foreach($products as $product)
-            <div class="hot_product" style="width:200px">
+        @foreach($products as $product)
+        <div class="hot_product" style="width:200px">
+            <a href="{{ route('home.show', ['id'=>$product->id]) }}" style="text-decoration: none">
                 <div class="image">
                 <?php
                         //use File;
@@ -97,18 +98,17 @@
                 </div>
                 <br>
                 <div class="aboutpr">
-                    <h4 class="name">{{$product->name}}</h4>
+                    <h3 class="name">{{$product->name}}</h3>
                     <h4 class="price">{{$product->price}}</h4>
                     <h5 class="old_price">{{$product->old_price}}</h5>
                     
                 </div>
                 <div class="button">
-                <a href="{{ route('home.show', ['id'=>$product->id]) }}">
-                    <button type="button" class="btn btn-outline-info">Thông tin</button>
-                </a>
+                   
                     
-                    <button type="button" class="btn btn-outline-success">Mua hàng</button>
+                    
                 </div>
+            </a>
             </div>
     @endforeach
     </div>

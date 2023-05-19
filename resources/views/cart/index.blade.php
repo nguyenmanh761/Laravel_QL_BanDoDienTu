@@ -131,9 +131,12 @@
                         <td colspan="3">
                         </td>
                         <td style="font-weight:900;">
-                            <button class="btn btn-danger">
-                                Thanh toán
-                            </button>
+                            <a href="/cart-bill">
+                                <button class="btn btn-danger">
+                                    Thanh toán
+                                </button>
+
+                            </a>
                         </td>
                     </tr>
                 </table>

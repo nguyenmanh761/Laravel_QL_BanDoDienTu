@@ -38,7 +38,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-                        <li class="nav-item"><a class="nav-link" href="/categories">Danh muc</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/categories" >Danh muc</a></li>
                         <li class="nav-item"><a class="nav-link" href="/search">Tim kiem</a></li>
                         <li class="nav-item"><a class="nav-link" href="/cart">Gio hang</a></li>
                         <li class="nav-item"><a class="nav-link" href="/lang/vn"><img src="/vn.png" style="width:50px; aspect-ratio:5/3" alt=""></a></li>
@@ -96,7 +96,7 @@
         <main class="py-4">
             @yield('content')
         </main>
-        <footer  style="background-color: black; color:antiquewhite; padding:10px">
+        <div  style="background-color: black; color:antiquewhite; padding:10px; height: 300px; margin-top:1440px;">
 			<div class="container">
 				<div class="container row">
 					<div class="col-md-3">
@@ -220,7 +220,7 @@
 					</div>
 				</div>
 			</div>
-		</footer>
+		</div>
     </div>
 	<script src="{{ asset('js/cart.js') }}" defer></script>
 </body>

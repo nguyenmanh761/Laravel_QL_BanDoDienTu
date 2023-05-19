@@ -39,19 +39,20 @@ Route::get('/notAuth', function(){
 
 
 //
-Route::resource('inserttocart', App\Http\Controllers\OrderUIcontroller::class);
-Route::get('/cart', [App\Http\Controllers\CartController::class, 'index']);
-Route::delete('/cart/{id}', [App\Http\Controllers\CartController::class, 'destroy'])->name('cart.delete');
-Route::post('/cart-update', [App\Http\Controllers\CartController::class, 'update'])->name('cart.update');
+Route::group(['middleware'=>['locale','auth']], function(){
+    Route::resource('inserttocart', App\Http\Controllers\OrderUIcontroller::class);
+    Route::get('/cart', [App\Http\Controllers\CartController::class, 'index']);
+    Route::delete('/cart/{id}', [App\Http\Controllers\CartController::class, 'destroy'])->name('cart.delete');
+    Route::post('/cart-update', [App\Http\Controllers\CartController::class, 'update'])->name('cart.update');
+    Route::get('/cart-bill', [App\Http\Controllers\CartController::class, 'writebill'])->name('cart.bill');
+});
 
 
 //
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/home.show/{id}', [App\Http\Controllers\HomeController::class, 'show'])->name('home.show');
 Route::get('/categories', [App\Http\Controllers\CategoriesController::class, 'index'])->name('categories');
-Route::get('/search', function(){
-    return view('search.index');
-})->name('categories');
+Route::get('/search', [App\Http\Controllers\SearchController::class, 'index'])->name('search');
 
 
 Route::get('/lang/{lang}', function($lang){

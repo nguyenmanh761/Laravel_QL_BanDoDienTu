@@ -27,7 +27,7 @@
         <nav style=" " class="navbar navbar-expand-md  shadow-sm navbar-dark bg-dark" >
             <div class="container" >
                 <a class="navbar-brand" href="/">
-                {{__('mylang.advertisment')}}
+                    Admin
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>

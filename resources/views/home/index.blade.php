@@ -37,7 +37,8 @@
    
     <div class ="hot">
     @foreach($products as $product)
-            <div class="hot_product">
+    <div class="hot_product">
+                <a href="{{ route('home.show', ['id'=>$product->id]) }}" style="text-decoration: none">
                 <div class="image">
                 <?php
                         //use File;
@@ -65,12 +66,9 @@
                     
                 </div>
                 <div class="button">
-                <a href="{{ route('home.show', ['id'=>$product->id]) }}">
-                    <button type="button" class="btn btn-outline-info">Thông tin</button>
-                </a>
-                    
-                    <button type="button" class="btn btn-outline-success">Mua hàng</button>
+
                 </div>
+            </a>
             </div>
     @endforeach
     </div>
