@@ -1,0 +1,39 @@
+
+.avatar1 {
+    width: 100%;
+    height: 250px;
+    border-radius: 150px;
+    background-color: rgba(213, 193, 246, 0.7);
+}
+
+.avatar2 {
+    width: 210px;
+    height: 210px;
+    border-radius: 50%;
+    position: absolute;
+    margin: 20px 0 0 20px;
+    background-color: gray;
+}
+
+.profile {
+    position: relative;
+    left: 250px;
+}
+
+.inf {
+    position: relative;
+    margin-top: 100px;
+    padding-left: 10%;
+    padding-right: 10%;
+    font-size: 24px;
+}
+
+.list-btn{
+    text-align: right;
+}
+
+.btn{
+    float:right;
+    margin-right: 20px;
+}
+/*  */

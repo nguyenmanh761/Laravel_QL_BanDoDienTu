@@ -10,4 +10,12 @@ class SearchController extends Controller
         $products = Product::inRandomOrder()->take(12)->get();
         return view('search.index', ['products'=>$products]);
     }
+
+    function searched(Request $request){
+        $keyword= $request->input('keyword');
+        $products = Product::where('name', 'LIKE', '%' . $keyword . '%')
+        ->get();
+
+        return view('search.index', ['products'=>$products]);
+    }
 }

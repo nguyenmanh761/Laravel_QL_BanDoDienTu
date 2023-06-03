@@ -3,17 +3,17 @@
 @section("content")
 <div class="container">
     <h1>Search Form</h1>
-    <form class="form-inline" >
-        
+    <form action="{{route('searched')}}" method="POST"  class="form-inline" > 
+        @csrf
         <div class="input-group" style="width: 50%">
-          <input type="text" class="form-control"  placeholder="Searching....">
+          <input name="keyword" id="keyword"  type="text" class="form-control"  placeholder="Searching....">
           <div class="input-group-append">
-            <button class="btn btn-warning" type="button">Tìm kiếm</button>
+            <button class="btn btn-warning" type="submit" onclick="search()">Tìm kiếm</button>
           </div>
         </div>
     </form>
     <br>
-    <div>
+    <div id="searchResults" class="searchResults">
       @foreach($products as $product)
       <div class="hot_product" style="float: left">
                 <a href="{{ route('home.show', ['id'=>$product->id]) }}" style="text-decoration: none">

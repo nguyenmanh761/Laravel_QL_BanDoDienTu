@@ -3,6 +3,8 @@
         'advertisment' => 'Home',
         'business' => 'Business',
         'category' => 'Category',
+        'search' => 'Search',
+        'cart' => 'Cart',
         'comment' => 'Comment',
         'customer' => 'Customer',
         'failed_jobs' => 'Failed_jobs',

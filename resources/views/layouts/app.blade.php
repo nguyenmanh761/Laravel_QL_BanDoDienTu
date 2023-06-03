@@ -19,6 +19,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/profile.css') }}" rel="stylesheet">
     <link href="{{ asset('css/advertisment.css') }}" rel="stylesheet">
 
 </head>
@@ -38,9 +39,9 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-                        <li class="nav-item"><a class="nav-link" href="/categories" >Danh muc</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/search">Tim kiem</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/cart">Gio hang</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/categories" >{{__('mylang.category')}}</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/search">{{__('mylang.search')}}</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/cart">{{__('mylang.cart')}}</a></li>
                         <li class="nav-item"><a class="nav-link" href="/lang/vn"><img src="/vn.png" style="width:50px; aspect-ratio:5/3" alt=""></a></li>
                         <li class="nav-item"><a class="nav-link" href="/lang/en"><img src="/en.png" style="width:50px; aspect-ratio:5/3" alt=""></a></li>
                 
@@ -70,7 +71,8 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="">My pr</a>
+                                    <a class="dropdown-item" href="/profile">Profile</a>
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

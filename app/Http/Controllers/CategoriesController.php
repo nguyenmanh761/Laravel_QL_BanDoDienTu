@@ -14,4 +14,10 @@ class CategoriesController extends Controller
 
         return view('categories.index', ['products'=>$products]);
     }
+
+    public function index2($category_id)
+    {
+        $products = Product::where('category_id', $category_id)->get();
+        return view('categories.index', ['products'=>$products]);
+    }
 }

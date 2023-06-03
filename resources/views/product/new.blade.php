@@ -33,14 +33,14 @@
         @endforeach
         </select>
     </div>
-    <div class="form-group">
+    {{-- <div class="form-group">
         <label for="category_id">Danh mục</label>
         <select type="..." name="category_id" class="form-control" id="category_id" aria-describedby="category_idHelp" placeholder="Enter category_id">
         @foreach ($categories as $category)
             <option value="{{$category->id}}" {{old('category_id')==$category->id?"selected":""}}>{{$category->name}}</option>
         @endforeach
         </select>
-    </div>
+    </div> --}}
     <div class="form-group">
         <label for="style_id">Kiểu</label>
         <select type="..." name="style_id" class="form-control" id="style_id" aria-describedby="style_idHelp" placeholder="Enter style_id">

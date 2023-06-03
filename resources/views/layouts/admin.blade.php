@@ -36,7 +36,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-                        <li class="nav-item"><a class="nav-link" href="/business"> {{__('mylang.business')}}</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/user">User</a></li>
                         <li class="nav-item"><a class="nav-link" href="/category">{{__('mylang.category')}}</a></li>
                         <li class="nav-item"><a class="nav-link" href="/customer">{{__('mylang.customer')}}</a></li>
                         <li class="nav-item"><a class="nav-link" href="/feedback">{{__('mylang.feedback')}}</a></li>
@@ -71,6 +71,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('home') }}">User</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

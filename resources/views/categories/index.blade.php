@@ -3,11 +3,11 @@
 @section("content")
 <div  style="margin-top:50px; height:1920px" class="container">
     <div style="display: flex;">
-        <div class="list-group">
-            <a href="/categories.smartphone" class="list-group-item list-group-item-action ">Điện thoại</a>
-            <a href="/categories.smartphone" class="list-group-item list-group-item-action active" >Tivi</a>
-            <a href="/categories.smartphone" class="list-group-item list-group-item-action">Lap top</a>
-            <a href="/categories.smartphone" class="list-group-item list-group-item-action disabled">Máy tính bảng</a>
+        <div style="font-size: 24px">
+            <a href="/categoriess/2" style="float:left" class="list-group-item list-group-item-action">Điện thoại</a>
+            <a href="/categoriess/1" style="float:left" class="list-group-item list-group-item-action" >Tivi</a>
+            <a href="/categoriess/5" style="float:left" class="list-group-item list-group-item-action">Lap top</a>
+            <a href="/categoriess/62" style="float:left" class="list-group-item list-group-item-action">Máy tính bảng</a>
         </div>
 
         <div style=" width:auto; height:400px">
@@ -36,7 +36,7 @@
                 <br>
                 <div class="aboutpr">
                     <h3 class="name">{{$product->name}}</h3>
-                    <h3> {{$product->id}} </h3>
+                    
                     <h4 class="price">{{$product->price}}</h4>
                     <h5 class="old_price">{{$product->old_price}}</h5>
                     

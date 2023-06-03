@@ -131,6 +131,7 @@
                         <td colspan="3">
                         </td>
                         <td style="font-weight:900;">
+                            <a href="/bills">Hóa đơn</a>
                             <a href="/cart-bill">
                                 <button class="btn btn-danger">
                                     Thanh toán

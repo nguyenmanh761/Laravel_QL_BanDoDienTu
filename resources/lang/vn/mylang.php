@@ -1,8 +1,10 @@
 <?php
     return [
-        'advertisment' => 'Quảng cáo',
+        'advertisment' => 'Trang chủ',
         'business' => 'Cửa hàng',
         'category' => 'Danh mục',
+        'search' => 'Tìm kiếm',
+        'cart' => 'Giỏ hàng',
         'order' => 'Đơn hàng',
         'comment' => 'Bình luận',
         'customer' => 'Khách hàng',

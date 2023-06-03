@@ -28,6 +28,7 @@ Route::group(['middleware'=>['locale','auth', 'check.admin']], function(){
     Route::resource('comment', \App\Http\Controllers\CommentController::class);
     Route::resource('customer', \App\Http\Controllers\CustomerController::class);
     Route::resource('order', \App\Http\Controllers\OrderController::class);
+    Route::resource('user', \App\Http\Controllers\UserController::class);
     Route::get('/admin', function(){
         return view('admin');
     } )->name('admin');
@@ -45,6 +46,7 @@ Route::group(['middleware'=>['locale','auth']], function(){
     Route::delete('/cart/{id}', [App\Http\Controllers\CartController::class, 'destroy'])->name('cart.delete');
     Route::post('/cart-update', [App\Http\Controllers\CartController::class, 'update'])->name('cart.update');
     Route::get('/cart-bill', [App\Http\Controllers\CartController::class, 'writebill'])->name('cart.bill');
+    Route::get('/bills', [App\Http\Controllers\CartController::class, 'showbills'])->name('cart.showbills');
 });
 
 
@@ -52,10 +54,15 @@ Route::group(['middleware'=>['locale','auth']], function(){
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/home.show/{id}', [App\Http\Controllers\HomeController::class, 'show'])->name('home.show');
 Route::get('/categories', [App\Http\Controllers\CategoriesController::class, 'index'])->name('categories');
-Route::get('/search', [App\Http\Controllers\SearchController::class, 'index'])->name('search');
+Route::get('/categoriess/{category_id}', [App\Http\Controllers\CategoriesController::class, 'index2']);
+Route::get('/search', [App\Http\Controllers\SearchController::class, 'index']);
+Route::post('/searched', [App\Http\Controllers\SearchController::class, 'searched'])->name('searched');
+Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
+Route::get('/profile.edit', [App\Http\Controllers\ProfileController::class, 'edit']);
+Route::get('/profile.update', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
 
 
 Route::get('/lang/{lang}', function($lang){
     session(['language'=>$lang]);
-    return redirect()->route('index');
+    return redirect()->route('home');
 });
