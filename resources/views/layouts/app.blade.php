@@ -21,14 +21,16 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/profile.css') }}" rel="stylesheet">
     <link href="{{ asset('css/advertisment.css') }}" rel="stylesheet">
+<style>
 
+</style>
 </head>
 <body>
     <div id="app" >
-        <div style="text-align:center; width:100%; position:fixed; z-index:99">
+        <div style="text-align:center; width:100%; position:fixed; z-index:99; color: yellow;">
     
-        <nav style=" " class="navbar navbar-expand-md  shadow-sm navbar-dark bg-dark" >
-            <div class="container" >
+        <nav class="navbar navbar-expand-md  shadow-sm navbar-dark bg-dark text-warning" >
+            <div  class="container" >
                 <a class="navbar-brand" href="/">
                 {{__('mylang.advertisment')}}
                 </a>
@@ -39,11 +41,11 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-                        <li class="nav-item"><a class="nav-link" href="/categories" >{{__('mylang.category')}}</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/search">{{__('mylang.search')}}</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/cart">{{__('mylang.cart')}}</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/lang/vn"><img src="/vn.png" style="width:50px; aspect-ratio:5/3" alt=""></a></li>
-                        <li class="nav-item"><a class="nav-link" href="/lang/en"><img src="/en.png" style="width:50px; aspect-ratio:5/3" alt=""></a></li>
+                        <li class=""><a class="nav-link text-warning" href="/categories" >{{__('mylang.category')}}</a></li>
+                        <li class="nav-item"><a class="nav-link text-warning" href="/search">{{__('mylang.search')}}</a></li>
+                        <li class="nav-item"><a class="nav-link text-warning" href="/cart">{{__('mylang.cart')}}</a></li>
+                        <li class="nav-item"><a class="nav-link text-warning" href="/lang/vn"><img src="/vn.png" style="width:50px; aspect-ratio:5/3" alt=""></a></li>
+                        <li class="nav-item"><a class="nav-link text-warning" href="/lang/en"><img src="/en.png" style="width:50px; aspect-ratio:5/3" alt=""></a></li>
                 
                     </ul>
 
